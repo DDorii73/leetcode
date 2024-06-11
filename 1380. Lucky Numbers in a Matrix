@@ -1,0 +1,5 @@
+class Solution:
+    def luckyNumbers (self, matrix: List[List[int]]) -> List[int]:
+        minrow = {min(r) for r in matrix}
+        maxcol = {max(c) for c in zip(*matrix)} # zip(*) 对矩阵进行转置，即找出每一列中的最大值
+        return list(minrow & maxcol)
