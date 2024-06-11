@@ -1,0 +1,8 @@
+class Solution:
+    def repeatedCharacter(self, s: str) -> str:
+        st = set()
+        for i in range(len(s)): # s = "abccbaacz"
+            if s[i] in st:  # condition will be true when i = 3
+                return s[i] # return c
+            else:
+                st.add(s[i]) # st = {a,b,c}
