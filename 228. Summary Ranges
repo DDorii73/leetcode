@@ -1,0 +1,13 @@
+class Solution:
+    def summaryRanges(self, nums: List[int]) -> List[str]:
+        result_list = []
+        range_from = 0
+        window_size = 0
+        while range_from + window_size < len(nums):
+            if range_from + window_size == len(nums) - 1 or nums[range_from + window_size] + 1 != nums[range_from + window_size + 1]:
+                result_list.append(str(nums[range_from]) + ("" if window_size == 0 else "->" + str(nums[range_from + window_size])))
+                range_from = range_from + window_size + 1
+                window_size = 0
+            else :
+                window_size += 1
+        return result_list
