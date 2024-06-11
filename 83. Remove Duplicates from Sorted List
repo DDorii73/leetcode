@@ -1,0 +1,23 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        #오름차순으로 정렬-겹치는 것 발견-1개만 출력-전체 출력
+      # 현재 노드를 head로 초기화합니다.
+        current = head
+        
+        # 현재 노드와 다음 노드가 모두 존재하는 동안 반복합니다.
+        while current and current.next:
+            # 만약 현재 노드와 다음 노드의 값이 같다면,
+            # 현재 노드의 다음을 현재 노드의 다음 다음으로 업데이트합니다.
+            if current.val == current.next.val:
+                current.next = current.next.next
+            else:
+                # 그렇지 않으면, 현재 노드를 다음 노드로 이동합니다.
+                current = current.next
+        
+        # 중복을 제거한 리스트의 head를 반환합니다.
+        return head
