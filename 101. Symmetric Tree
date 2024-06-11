@@ -1,0 +1,26 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        def isMirror(left: TreeNode, right: TreeNode) -> bool:
+            # 두 노드가 모두 비어있으면 대칭입니다.
+            if not left and not right:
+                return True
+            # 한쪽 노드만 비어있으면 대칭이 아닙니다.
+            if not left or not right:
+                return False
+            # 두 노드의 값이 다르면 대칭이 아닙니다.
+            if left.val != right.val:
+                return False
+            # 현재 노드가 대칭이면, 자식 노드도 대칭인지 재귀적으로 확인합니다.
+            return isMirror(left.left, right.right) and isMirror(left.right, right.left)
+
+        # 루트 노드가 없으면 트리는 대칭입니다.
+        if not root:
+            return True
+        # 루트 노드의 왼쪽과 오른쪽 자식을 비교하여 시작합니다.
+        return isMirror(root.left, root.right)
