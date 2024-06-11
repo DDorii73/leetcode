@@ -1,0 +1,17 @@
+class Solution:
+    def numberOfMatches(self, n: int) -> int:
+         def win(n,a):
+            if n==1:
+                return a
+            elif n%2==0:
+                
+                n=n//2
+                a+=n
+                return(win(n,a))
+            else:
+               
+                b=(n-1)//2
+                a+=b
+                n-=b
+                return win(n,a)
+         return win(n,0)
