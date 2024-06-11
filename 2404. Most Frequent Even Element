@@ -1,0 +1,17 @@
+class Solution:
+    def mostFrequentEven(self, nums: List[int]) -> int:
+        maxx = 0 #max count intially zero
+        even_element = -1   #even_element intially  -1
+        d={} #creation of dictionary
+        for i in nums:
+            if i%2==0:
+                if i not in d:d[i]=1 
+                else:d[i]+=1
+        for val,count in d.items(): #key=val and count=values
+            if count>maxx:    #comparing count is greater then maxx 
+                maxx=count
+                even_element=val 
+            elif count==maxx:   #if the count is tie 
+                if even_element>val: #checking the even-element is lesser or not 
+                    even_element=val
+        return even_element
