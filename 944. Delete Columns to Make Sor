@@ -1,0 +1,10 @@
+class Solution:
+    def minDeletionSize(self, strs: List[str]) -> int:
+        char_matrix = []
+        count = 0
+        for column in zip(*strs):
+            char_matrix.append(list(column))
+        for col in char_matrix:
+            if col != sorted(col):
+                count += 1
+        return count
