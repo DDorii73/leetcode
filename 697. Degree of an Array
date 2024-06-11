@@ -1,0 +1,13 @@
+class Solution:
+    def findShortestSubArray(self, nums: List[int]) -> int:
+        f = collections.Counter(nums)
+        d = max(f.values())
+        if d == 1:
+            return(1)
+        nums_f = [n for n in f if f[n] == d]
+        ans = len(nums)
+        for n in nums_f:
+            li = nums.index(n)
+            ri = len(nums) - nums[::-1].index(n)
+            ans = min(ans, ri - li)
+        return(ans)
