@@ -1,0 +1,9 @@
+class Solution:
+    def findPermutationDifference(self, s: str, t: str) -> int:
+        alpha = {}
+        for i, c in enumerate(s):
+            alpha[c] = i
+        ans = 0
+        for i, c in enumerate(t):
+            ans += abs(i - alpha[c])
+        return ans
