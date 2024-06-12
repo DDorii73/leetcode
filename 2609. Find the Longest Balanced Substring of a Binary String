@@ -1,0 +1,21 @@
+class Solution:
+    def findTheLongestBalancedSubstring(self, s: str) -> int:
+        ans = 0
+        zeroCnt = 0
+        oneCnt = 0
+        cnt = 0
+        
+        for i in range(len(s)):
+            if s[i] == '0':
+                if oneCnt == zeroCnt:
+                    ans = max(ans, oneCnt)
+                oneCnt = 0
+                zeroCnt += 1
+            else:
+                oneCnt += 1
+                if oneCnt <= zeroCnt:
+                    ans = max(ans, oneCnt)
+                if i + 1 < len(s) and s[i + 1] != s[i]:
+                    zeroCnt = 0
+                    
+        return 2 * ans
